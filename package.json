@@ -2,20 +2,30 @@
   "name": "interactive",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "webpack-dev-server --progress --config webpack.config.dev.js",
-    "build": "webpack --progress --config webpack.config.production.js"
+    "backend:build": "node app.js ",
+    "backend:dev": "nodemon app.js ",
+    "frontend:start": "npm run dev",
+    "frontend:dev": "webpack-dev-server --progress --config webpack.config.dev.js",
+    "build": "webpack --progress --config webpack.config.production.js",
+    "start": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" \"browser-sync start --config bs-config.js\" "
   },
   "author": "Cristhian Benitez",
   "license": "ISC",
   "devDependencies": {
+    "@prettier/plugin-pug": "^1.20.0",
     "babel-loader": "^8.2.4",
+    "browser-sync": "^2.27.9",
     "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^7.0.0",
+    "connect-livereload": "^0.6.1",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
     "eslint": "^8.11.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
     "glslify-loader": "^2.0.0",
     "image-minimizer-webpack-plugin": "^3.2.3",
     "imagemin": "^8.0.1",
@@ -23,8 +33,12 @@
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
+    "livereload": "^0.9.3",
     "mini-css-extract-plugin": "^2.6.0",
+    "nodemon": "^2.0.15",
     "postcss-loader": "^6.2.1",
+    "prettier": "^2.6.0",
+    "pug": "^3.0.2",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "terser-webpack-plugin": "^5.3.1",
@@ -33,5 +47,13 @@
     "webpack-dev-middleware": "^5.3.1",
     "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@prismicio/client": "^6.4.2",
+    "@prismicio/helpers": "^2.2.1",
+    "dotenv": "^16.0.0",
+    "express": "4.17.1",
+    "node-fetch": "^3.2.3",
+    "nodemon": "^2.0.15"
   }
 }

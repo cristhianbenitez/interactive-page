@@ -1,36 +1,52 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-
-const app = express();
-const port = 8000;
-
+/* eslint-disable import/extensions */
 const prismicH = require('@prismicio/helpers');
-const { client } = require('./prismic.configuration');
+const app = require('./config.js');
+const asyncHandler = require('./utils/async-handler.js');
+const { client } = require('./prismicConfig.js');
 
-app.use((req, res, next) => {
+const route = app();
+const PORT = route.get('port');
+
+route.listen(PORT, () => {
+  process.stdout.write(`Point your browser to: http://localhost:${PORT}\n`);
+});
+
+const prismicAutoPreviewsMiddleware = (req, _res, next) => {
+  client.enableAutoPreviewsFromReq(req);
+  next();
+};
+route.use(prismicAutoPreviewsMiddleware);
+
+// Middleware to connect to inject prismic context
+route.use((req, res, next) => {
   res.locals.ctx = {
     prismicH,
   };
   next();
 });
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// Route for Previews
+route.get(
+  '/',
+  asyncHandler(async (req, res) => {
+    res.render('pages/home');
+  })
+);
+route.get(
+  '/about',
+  asyncHandler(async (req, res) => {
+    const metadata = await client.getByType('meta');
+    const aboutPage = await client.getByType('about');
+    console.log(metadata.results);
+    const [about] = aboutPage.results;
+    // console.log(about);
 
-app.get('/', (req, res) => {
-  res.render('pages/home');
-});
-app.get('/about', (req, res) => {
-  res.render('pages/about');
-});
-app.get('/detail/:id', (req, res) => {
+    res.render('pages/about');
+  })
+);
+route.get('/detail/:id', (req, res) => {
   res.render('pages/detail');
 });
-app.get('/collections', (req, res) => {
+route.get('/collections', (req, res) => {
   res.render('pages/collections');
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
 });

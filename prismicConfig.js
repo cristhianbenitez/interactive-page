@@ -21,14 +21,6 @@ const client = prismic.createClient(endpoint, {
       type: 'home',
       path: '/',
     },
-    {
-      type: 'about',
-      path: '/about',
-    },
-    {
-      type: 'collection',
-      path: '/collections',
-    },
   ],
 });
 
@@ -36,3 +28,8 @@ module.exports = {
   client,
   repoName,
 };
+
+//  {
+//     type: 'detail',
+//     path: '/detail/:id',
+//   },

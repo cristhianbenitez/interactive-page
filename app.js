@@ -1,8 +1,7 @@
-/* eslint-disable import/extensions */
 const prismicH = require('@prismicio/helpers');
-const app = require('./config.js');
-const asyncHandler = require('./utils/async-handler.js');
-const { client } = require('./prismicConfig.js');
+const app = require('./config');
+const asyncHandler = require('./utils/async-handler');
+const { client } = require('./prismicConfig');
 
 const route = app();
 const PORT = route.get('port');
@@ -35,18 +34,26 @@ route.get(
 route.get(
   '/about',
   asyncHandler(async (req, res) => {
-    const metadata = await client.getByType('meta');
-    const aboutPage = await client.getByType('about');
-    console.log(metadata.results);
-    const [about] = aboutPage.results;
-    // console.log(about);
+    const about = await client.getSingle('about');
+    const meta = await client.getSingle('meta');
 
-    res.render('pages/about');
+    res.render('pages/about', {
+      about,
+      meta,
+    });
   })
 );
-route.get('/detail/:id', (req, res) => {
-  res.render('pages/detail');
-});
+route.get(
+  '/detail/:id',
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const product = await client.getByUID('product', id, {
+      fetchLinks: 'collection.title',
+    });
+    console.log(product.data);
+    res.render('pages/detail', { product });
+  })
+);
 route.get('/collections', (req, res) => {
   res.render('pages/collections');
 });

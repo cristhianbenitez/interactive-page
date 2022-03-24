@@ -7,7 +7,7 @@
     "frontend:start": "npm run dev",
     "frontend:dev": "webpack-dev-server --progress --config webpack.config.dev.js",
     "build": "webpack --progress --config webpack.config.production.js",
-    "start": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" \"browser-sync start --config bs-config.js\" "
+    "start": "concurrently --kill-others \"npm run backend:dev\" \"npm run frontend:dev\" \"browser-sync start --config bs-config.js\" "
   },
   "author": "Cristhian Benitez",
   "license": "ISC",

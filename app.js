@@ -80,6 +80,8 @@ route.get(
       fetchLinks: 'collection.title',
     });
 
+    console.log(product.data.informations);
+
     res.render('pages/detail', { product, ...defaults });
   })
 );

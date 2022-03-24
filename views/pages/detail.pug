@@ -14,19 +14,18 @@ block content
 
       .detail__information
         p.detail__information-collection= product.data.collection.data.title[0].text
+        h1.detail__information-title= product.data.title
 
-      h1.detail__information-title= product.data.title
+        .detail__information-content
+          .detail__information-highlights
+            each highlight in product.data.highlights
+              p.detail__information-highlight
+                svg.detail__information-highlight__icon
+                  use(
+                    xlink:href=`sprite-${highlight.highlights_icons.toLowerCase()}`
+                  )
 
-      .detail__information-content
-        .detail__information-highlights
-          each highlight in product.data.highlights
-            p.detail__information-highlight
-              svg.detail__information-highlight__icon
-                use(
-                  xlink:href=`sprite-${highlight.highlights_icons.toLowerCase()}`
-                )
-
-              span #{ highlight.highlights_text }
+                span.detail__information-highlight__text!= highlight.highlights_text.replace(/\n/g, '<br>')
 
             .detail__information-list
               each item in product.data.informations
@@ -34,4 +33,4 @@ block content
                   strong.detail__information-item__title= item.information_label
                   span.detail__information-item__description= item.information_description
 
-          a.detail__information-link(href=product.data.link_url.url)= product.data.link_text
+            a.detail__information-link(href=product.data.link_url.url)= product.data.link_text

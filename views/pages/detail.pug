@@ -1,7 +1,37 @@
-extends ../base.pug
+extends ../_includes/layout
 
 block variables
   - var template = 'detail';
 
 block content
-  h1.collections__title Detail
+  .detail
+    .detail__wrapper
+      figure.detail__media
+        img.detail__media-image(
+          alt=product.data.image.alt,
+          src=product.data.image.url
+        )
+
+      .detail__information
+        p.detail__information-collection= product.data.collection.data.title[0].text
+
+      h1.detail__information-title= product.data.title
+
+      .detail__information-content
+        .detail__information-highlights
+          each highlight in product.data.highlights
+            p.detail__information-highlight
+              svg.detail__information-highlight__icon
+                use(
+                  xlink:href=`sprite-${highlight.highlights_icons.toLowerCase()}`
+                )
+
+              span #{ highlight.highlights_text }
+
+            .detail__information-list
+              each item in product.data.informations
+                p.detail_information-item
+                  strong.detail__information-item__title= item.information_label
+                  span.detail__information-item__description= item.information_description
+
+          a.detail__information-link(href=product.data.link_url.url)= product.data.link_text

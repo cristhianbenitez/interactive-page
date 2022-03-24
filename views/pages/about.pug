@@ -1,4 +1,4 @@
-extends ../base.pug
+extends ../_includes/layout
 
 block variables
   - var template = 'about';
@@ -37,7 +37,7 @@ block content
               if section.primary.label !== null
                 p.about__highlight-label= section.primary.label
 
-              h3.about__title= section.primary.title
+              h3.about__highlight-title= section.primary.title
 
               each media in section.items
                 figure.about__highlight-media

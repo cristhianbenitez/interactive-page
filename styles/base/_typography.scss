@@ -1,5 +1,9 @@
-
 body {
-  color: $text-color;
-  font: normal 125% / 1.4 $text-font-stack;
+  font-family: $--ff-suisse;
+  font-weight: 300;
+  @extend %description-16;
+
+  @include media('<=phone') {
+    font-size: 5rem;
+  }
 }

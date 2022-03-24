@@ -1,19 +1,20 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
+@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins',
+  'shared/title', 'shared/description';
 
 // 2. Vendors
-@import 'vendors/normalize', 'vendors/reset';
+@import 'vendors/normalize', 'vendors/reset', 'vendors/include-media';
 
 // 3. Base stuff
 @import 'base/base', 'base/fonts', 'base/typography', 'base/helpers';
 
 // // 4. Layout-related sections
-// @import 'layout/header', 'layout/footer';
+@import 'layout/navigation';
 
 // 5. Components
-@import 'components/button';
+@import 'components/preloader';
 
 // 6. Page-specific styles
 @import 'pages/home/home', 'pages/about/about', 'pages/collections/collections',

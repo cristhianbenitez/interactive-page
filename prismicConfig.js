@@ -16,6 +16,7 @@ const client = prismic.createClient(endpoint, {
   // This defines how you will structure URL paths in your project.
   // Update the types to match the Custom Types in your project, and edit
   // the paths to match the routing in your project.
+
   routes: [
     {
       type: 'home',

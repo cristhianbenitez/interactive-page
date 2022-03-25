@@ -3,6 +3,7 @@
   @extend %center;
 
   background: $--clr-quicksand;
+  color: $--clf-white;
 }
 
 .detail__wrapper {
@@ -59,7 +60,7 @@
 }
 
 .detail__information-highlight__icon {
-  border: 1px solid #f0f;
+  border: 1px solid currentColor;
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
@@ -72,13 +73,14 @@
 
 .detail__information-list {
   margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 .detail_information-item {
   display: flex;
 
   &:not(:first-child) {
-    margin-top: 4rem;
+    margin-top: 2.85rem;
   }
 }
 
@@ -92,6 +94,7 @@
 .detail__information-item__description {
   @extend %description-16;
 
+  padding-right: 1.5rem;
   max-width: 44rem;
 }
 

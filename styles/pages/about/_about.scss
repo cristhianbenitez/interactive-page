@@ -1,10 +1,16 @@
 @import './content', './gallery', './highlight';
 
 .about {
+  background: $--clr-cadet-blue;
+  color: $--clr-bright-gray;
 }
 
 .about__wrapper {
 }
 
 .about__title {
+  @extend %title-100;
+
+  margin: auto;
+  text-align: center;
 }

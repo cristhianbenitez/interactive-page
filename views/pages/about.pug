@@ -15,9 +15,9 @@ block content
                 src=media.image.url
               )
 
+      h2.about__title!= about.data.title.replace(/\n/g, '<br>')
+
       each section in about.data.body
-        if section.slice_type === 'title'
-          h2.about__title= section.primary.text
         if section.slice_type === 'content'
           section.about__content
             .about__content-wrapper
@@ -31,27 +31,31 @@ block content
                   src=section.primary.image.url
                 )
 
+        if section.slice_type === 'title'
+          h2.about__title!= section.primary.text.replace(/\n/g, '<br>')
+
+        if section.slice_type === 'gallery'
+          section.about__gallery
+            .about__gallery-wrapper
+              each media in section.items
+                figure.about__gallery-media
+                  img.about__gallery-media__image(
+                    alt=media.images.alt,
+                    src=media.images.url
+                  )
+
         if section.slice_type === 'highlight'
           section.about__highlight
-            h3.about__highlight-wrapper
+            .about__highlight-wrapper
               if section.primary.label !== null
                 p.about__highlight-label= section.primary.label
 
-              h3.about__highlight-title= section.primary.title
+              h3.about__highlight-title= section.primary.title1
 
-              each media in section.items
-                figure.about__highlight-media
-                  img.about__highlight-media__image(
-                    alt=media.alt,
-                    src=media.url
-                  )
-
-              if section.slice_type === 'gallery'
-                section.about__gallery
-                  .about__gallery-wrapper
-                    each media in section.items
-                      figure.about__gallery-media
-                        img.about__gallery-media__image(
-                          alt=media.image.alt,
-                          src=media.image.url
-                        )
+              .about__highlight-medias
+                each media in section.items
+                  figure.about__highlight-media
+                    img.about__highlight-media__image(
+                      alt=media.media.alt,
+                      src=media.media.url
+                    )

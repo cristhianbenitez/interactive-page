@@ -6,9 +6,9 @@ block variables
 block content
   .collections
     .collections-wrapper
-      .collections_titles
+      .collections__titles
         each collection, index in collections
-          .collections__titles-label= `${home.data.collection} ${['One', 'Two', 'Three', 'Four'][index]}`
+          .collections__titles-label!= `${home.data.collection}<br>${['One', 'Two', 'Three', 'Four'][index]}`
           .collections__titles-title= collection.data.title[0].text
 
       .collections__gallery
@@ -23,7 +23,9 @@ block content
                 )
 
       .collections__content
-        each collection in collections
-          article.collections__article
+        each collection, index in collections
+          article.collections__article(
+            class=`${index === 0 && 'collections__article--active'}`
+          )
             h2.collections__article-title= `${collection.data.title[0].text} ${home.data.collection}`
             p.collections__article-description= collection.data.description

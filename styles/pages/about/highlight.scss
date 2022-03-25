@@ -1,14 +1,57 @@
 .about__highlight {
+  margin: 20rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .about__highlight-wrapper {
+  margin: auto;
+  height: 104rem;
+  position: relative;
+  width: 144rem;
 }
 
 .about__highlight-label {
+  @extend %description-12;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 9.6rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.about__highlight-title {
+  @extend %title-200;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  top: 50%;
+  left: 50%;
 }
 
 .about__highlight-media {
+  height: 76rem;
+  position: absolute;
+  width: 54rem;
+
+  &:first-child {
+    top: 0;
+    left: 0;
+  }
+  &:last-child {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .about__highlight-media__image {
+  @extend %cover;
+
+  object-fit: cover;
 }

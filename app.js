@@ -63,6 +63,7 @@ route.get(
     const defaults = await clientHandler.defaults();
     const about = await client.getSingle('about');
 
+    console.log(about.data.body);
     res.render('pages/about', {
       about,
       ...defaults,

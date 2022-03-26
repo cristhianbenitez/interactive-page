@@ -103,28 +103,23 @@ module.exports = {
         minimizer: {
           implementation: ImageMinimizerPlugin.imageminMinify,
           options: {
-            plugins: [['jpegtran', { progressive: true }]],
+            plugins: [
+              ['gifsicle', { interlaced: true }],
+
+              // progressive: Lossless conversion to progressive.
+              ['jpegtran', { progressive: true }],
+
+              // optimizationLevel (0-7): The optimization level 0 enables a set of
+              // optimization operations that require minimal effort. There will be
+              // no changes to image attributes like bit depth or color type, and no
+              // recompression of existing IDAT datastreams. The optimization level
+              // 1 enables a single IDAT compression trial. The trial chosen is what
+              //  OptiPNG thinks it’s probably the most effective.
+              ['optipng', { optimizationLevel: 8 }],
+            ],
           },
-          // Progressive images ... more info here https://jmperezperez.com/medium-image-progressive-loading-placeholder/
-          // Only apply this one to files equal to or over 8192 bytes
           filter: (source) => {
             if (source.byteLength >= 8192) {
-              return true;
-            }
-
-            return false;
-          },
-        },
-      }),
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
-          options: {
-            plugins: [['jpegtran', { progressive: false }]],
-          },
-          // Only apply this one to files under 8192
-          filter: (source) => {
-            if (source.byteLength < 8192) {
               return true;
             }
 

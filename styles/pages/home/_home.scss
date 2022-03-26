@@ -1,16 +1,63 @@
 .home {
+  @extend %cover;
+  @extend %center;
+
+  text-align: center;
+  background: $--clr-contessa;
+  color: $--clf-white;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  &:before {
+    background: linear-gradient(to bottom, $--clr-contessa, $--clr-contessa);
+  }
 }
+
 .home__wrapper {
 }
+
 .home__titles {
+  @extend %vertical-titles;
 }
+
 .home__titles-label {
+  @extend %vertical-titles-label;
 }
+
 .home__titles-title {
+  @extend %vertical-titles-title;
 }
+
 .home__gallery {
+  @extend %cover;
 }
+
 .home__gallery-media {
+  position: absolute;
 }
+
 .home__gallery-media__image {
+}
+
+.home__link {
+  @extend %description-14;
+
+  display: flex;
+  bottom: 5rem;
+  left: 50%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  width: 28.8rem;
+  height: 6rem;
 }

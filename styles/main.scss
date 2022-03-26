@@ -4,17 +4,17 @@
 @import 'vendors/reset', 'vendors/normalize', 'vendors/include-media';
 
 //  Configuration ,mixins and helpers
-@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins',
-  'shared/titles', 'shared/description';
+@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
 
 //  Base stuff
 @import 'base/base', 'base/fonts', 'base/typography', 'base/helpers';
 
+//  Components and shared
+@import 'components/preloader', 'shared/titles', 'shared/description',
+  'shared/vertical-titles';
+
 //  Layout-related sections
 @import 'layout/navigation';
-
-//  Components
-@import 'components/preloader';
 
 //  Page-specific styles
 @import 'pages/home/home', 'pages/about/about', 'pages/collections/collections',

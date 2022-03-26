@@ -11,24 +11,31 @@
 
 .about__highlight-wrapper {
   margin: auto;
-  height: 104rem;
+  height: 105.6rem;
   position: relative;
   width: 144rem;
+
+  .about__highlight:nth-child(4) & {
+    width: 104rem;
+  }
 }
 
 .about__highlight-label {
   @extend %description-12;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%);
   width: 9.6rem;
+  left: 50%;
+  top: 9rem;
+  transform: translate(-50%);
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.1rem;
+  line-height: 1.8rem;
 }
 
 .about__highlight-title {
   @extend %title-200;
+
   position: absolute;
   transform: translate(-50%, -50%) rotate(-90deg);
   top: 50%;
@@ -40,12 +47,16 @@
   position: absolute;
   width: 54rem;
 
+  .about__highlight:nth-child(4) & {
+    height: 52.8rem;
+    width: 36rem;
+  }
   &:first-child {
     top: 0;
     left: 0;
   }
   &:last-child {
-    bottom: 0;
+    bottom: 65px;
     right: 0;
   }
 }

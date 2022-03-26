@@ -1,0 +1,23 @@
+%vertical-titles {
+  display: flex;
+  align-items: center;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  top: 50%;
+}
+
+%vertical-titles-label {
+  @extend %description-12;
+
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.8rem;
+  letter-spacing: 0.1rem;
+  transform: rotate(90deg);
+  margin: 0 1rem;
+}
+
+%vertical-titles-title {
+  @extend %title-200;
+}

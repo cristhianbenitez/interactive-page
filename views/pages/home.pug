@@ -7,14 +7,14 @@ block content
   .home
     .home__wrapper
       .home__titles
-      each collection, index in collections
-        .home__titles-label= `${home.data.collection} ${['One', 'Two', 'Three', 'Four'][index]}`
-        .home__titles-title= collection.data.title[0].text
+        each collection, index in collections
+          .home__titles-label= `${home.data.collection} ${['One', 'Two', 'Three', 'Four'][index]}`
+          .home__titles-title= collection.data.title[0].text
       .home__gallery
         each media in home.data.gallery
           figure.home__gallery-media
-          img.home__gallery-media__image(
-            alt=media.image.alt,
-            src=media.image.url
-          )
-        a(href=Link(home.data.collections))= home.data.button
+            img.home__gallery-media__image(
+              alt=media.image.alt,
+              src=media.image.url
+            )
+      a.home__link(href=Link(home.data.collections))= home.data.button

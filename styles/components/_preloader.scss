@@ -6,6 +6,7 @@
   background: $--clr-contessa;
   color: $--clf-white;
   display: none;
+  z-index: z('preloader');
 }
 
 .preloader__text {

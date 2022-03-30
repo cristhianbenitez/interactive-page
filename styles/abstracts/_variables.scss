@@ -11,6 +11,6 @@ $--ff-suisse: "Suisse BP Int'l" !default;
 
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
-$z-indexes: ('navigation', 'content');
+$z-indexes: ('preloader', 'navigation', 'content');
 
 $max-width: 1440px;

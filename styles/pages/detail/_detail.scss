@@ -103,3 +103,20 @@
 
   margin-top: 3rem;
 }
+
+.detail__button {
+  align-items: center;
+  bottom: 5rem;
+  width: 12.4rem;
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+}
+
+.detail__button-icon {
+  @extend %cover;
+}

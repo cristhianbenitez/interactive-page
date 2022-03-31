@@ -1,6 +1,10 @@
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
+
+  @include media('<phone') {
+    font-size: calc(100vw / 750 * 10);
+  }
 }
 
 *,

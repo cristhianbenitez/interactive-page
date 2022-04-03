@@ -7,6 +7,7 @@
   &:first-child {
     margin-top: 0;
   }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -14,6 +15,7 @@
   &:nth-child(5) {
     justify-content: flex-end;
   }
+
   &:nth-child(8) {
     justify-content: flex-start;
   }
@@ -25,10 +27,37 @@
   .about__content--right & {
     flex-direction: row-reverse;
   }
+
+  @include media('<phone') {
+    .about__content:nth-child(3) &,
+    .about__content:nth-child(8) &,
+    .about__content:nth-child(9) & {
+      flex-direction: column-reverse;
+    }
+
+    .about__content:nth-child(5) & {
+      flex-direction: column;
+    }
+  }
 }
 
 .about__content-box {
   display: flex;
+
+  @include media('<=phone') {
+    margin: auto;
+    width: 60.9rem;
+
+    .about__content:nth-child(3) &,
+    .about__content:nth-child(8) &,
+    .about__content:nth-child(9) & {
+      margin-top: 10rem;
+    }
+
+    .about__content:nth-child(5) & {
+      margin-bottom: 10rem;
+    }
+  }
 }
 
 .about__content-label {
@@ -36,6 +65,17 @@
 
   width: 18rem;
   text-transform: uppercase;
+
+  @include media('<=phone') {
+    padding-right: 2.5rem;
+    font-size: 2.4rem;
+    width: 11rem;
+    .about__content:nth-child(9) &,
+    .about__content:nth-child(8) & {
+      word-break: break-all;
+      width: 13rem;
+    }
+  }
 }
 
 .about__content-description {
@@ -43,6 +83,10 @@
   line-height: 2.4rem;
   p:not(:first-child) {
     margin-top: 2.75rem;
+  }
+
+  @include media('<=phone') {
+    width: calc(100% - 15rem);
   }
 }
 
@@ -67,6 +111,28 @@
     margin-left: 22rem;
     height: 85.8rem;
     width: 60.8rem;
+  }
+
+  @include media('<phone') {
+    .about__content:nth-child(3) & {
+      margin-left: 0;
+      height: 91.4rem;
+      width: 60.9rem;
+    }
+
+    .about__content:nth-child(5) & {
+      width: 100vw;
+      height: 50rem;
+      margin-left: 0;
+    }
+
+    .about__content:nth-child(8) & {
+      margin-right: 0;
+      width: 100vw;
+    }
+    .about__content:nth-child(9) & {
+      margin-left: 0;
+    }
   }
 }
 

@@ -2,16 +2,26 @@
   @extend %cover;
 
   color: $--clr-spanish-white;
+  pointer-events: none;
+  position: fixed;
   z-index: z('navigation');
 }
 
 .navigation__link {
   font-size: 0;
   position: absolute;
+  pointer-events: auto;
   left: 4rem;
   top: 4rem;
   width: 12.8rem;
   height: 2rem;
+
+  @include media('<phone') {
+    height: 4.3rem;
+    left: 5rem;
+    top: 5rem;
+    width: 27.9rem;
+  }
 }
 
 .navigation__link__icon {
@@ -23,10 +33,14 @@
 
 .navigation__list__item {
   position: absolute;
+  pointer-events: auto;
   right: 4rem;
   top: 4rem;
 }
 
 .navigation__list__link {
   @extend %title-20;
+
+  display: block;
+  
 }

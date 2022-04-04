@@ -29,3 +29,9 @@ block content
           )
             h2.collections__article-title= `${collection.data.title[0].text} ${home.data.collection}`
             p.collections__article-description= collection.data.description
+
+      .collections__mobile
+        each collection, index in collections
+          .collections__mobile-item
+            .collections__mobile-item__label!= `${home.data.collection}<br>${['One', 'Two', 'Three', 'Four'][index]}`
+            .collections__mobile-item__title= collection.data.title[0].text

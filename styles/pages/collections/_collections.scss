@@ -13,6 +13,10 @@
 
 .collections__titles {
   @extend %vertical-titles;
+
+  @include media('<phone') {
+    display: none;
+  }
 }
 
 .collections__titles-label {
@@ -53,6 +57,11 @@
 }
 
 .collections__content {
+  @extend %cover;
+
+  @include media('<phone') {
+    display: none;
+  }
 }
 
 .collections__article {
@@ -76,4 +85,30 @@
 
   line-height: 2.4rem;
   max-width: 44rem;
+}
+
+.collections__mobile {
+  display: flex;
+  position: absolute;
+  bottom: 5rem;
+  @include media('>=phone') {
+    display: none;
+  }
+}
+
+.collections__mobile-item {
+  padding-left: 5rem;
+  width: 100vw;
+}
+
+.collections__mobile-item__label {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.collections__mobile-item__title {
+  font-family: $--ff-george;
+  font-size: 12rem;
+  margin-top: 2.8rem;
 }

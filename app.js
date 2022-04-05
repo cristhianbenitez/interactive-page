@@ -22,6 +22,7 @@ route.use(prismicAutoPreviewsMiddleware);
 const linkResolver = (doc) => {
   if (doc.type === 'product') return `/detail/${doc.slug}`;
   if (doc.type === 'about') return `/about`;
+  if (doc.type === 'collections') return `/collections`;
   return '/';
 };
 

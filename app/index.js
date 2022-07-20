@@ -1,14 +1,24 @@
+import each from 'lodash/each';
+
 import About from 'pages/about';
 import Collections from 'pages/collections';
 import Details from 'pages/detail';
 import Home from 'pages/home';
-import each from 'lodash/each';
+
+import Preloader from './components/Preloader';
 
 class App {
   constructor() {
+    this.createPreloader();
     this.createContent();
     this.createPages();
+
     this.addLinkListeners();
+  }
+
+  createPreloader() {
+    this.preloader = new Preloader();
+    this.preloader.once('completed', this.onPreloaded());
   }
 
   createContent() {
@@ -39,6 +49,7 @@ class App {
       const div = document.createElement('div');
 
       div.innerHTML = html;
+
       const divContent = div.querySelector('.content');
 
       this.template = divContent.getAttribute('data-template');
@@ -48,9 +59,15 @@ class App {
       this.page = this.pages[this.template];
       this.page.create();
       this.page.show();
+
+      this.addLinkListeners();
     } catch (error) {
       console.error('error');
     }
+  }
+
+  onPreloaded() {
+    console.log('preloaded!');
   }
 
   addLinkListeners() {

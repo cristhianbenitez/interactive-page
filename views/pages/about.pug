@@ -12,7 +12,7 @@ block content
             figure.about__gallery-media
               img.about__gallery-media__image(
                 alt=media.image.alt,
-                src=media.image.url
+                data-src=media.image.url
               )
 
       h2.about__title!= about.data.title.replace(/\n/g, '<br>')
@@ -31,7 +31,7 @@ block content
               figure.about__content-media
                 img.about__content-media__image(
                   alt=section.primary.image.alt,
-                  src=section.primary.image.url
+                  data-src=section.primary.image.url
                 )
 
         if section.slice_type === 'title'
@@ -44,7 +44,7 @@ block content
                 figure.about__gallery-media
                   img.about__gallery-media__image(
                     alt=media.images.alt,
-                    src=media.images.url
+                    data-src=media.images.url
                   )
 
         if section.slice_type === 'highlight'
@@ -60,5 +60,5 @@ block content
                   figure.about__highlight-media
                     img.about__highlight-media__image(
                       alt=media.media.alt,
-                      src=media.media.url
+                      data-src=media.media.url
                     )

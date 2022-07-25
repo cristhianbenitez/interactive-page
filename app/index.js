@@ -18,7 +18,8 @@ class App {
 
   createPreloader() {
     this.preloader = new Preloader();
-    this.preloader.once('completed', this.onPreloaded());
+
+    this.preloader.once('completed', () => this.onPreloaded());
   }
 
   createContent() {
@@ -36,6 +37,11 @@ class App {
 
     this.page = this.pages[this.template];
     this.page.create();
+  }
+
+  onPreloaded() {
+    this.preloader.destroy();
+
     this.page.show();
   }
 
@@ -64,10 +70,6 @@ class App {
     } catch (error) {
       console.error('error');
     }
-  }
-
-  onPreloaded() {
-    console.log('preloaded!');
   }
 
   addLinkListeners() {

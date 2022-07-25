@@ -33,13 +33,38 @@ export default class Page {
 
   show() {
     return new Promise((resolve) => {
-      gsap.from(this.element, { autoAlpha: 0, onComplete: resolve });
+      this.animationIn = gsap.timeline();
+      this.animationIn.fromTo(
+        this.element,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, onComplete: resolve }
+      );
+
+      this.animationIn.call(() => {
+        this.addEventListeners();
+        resolve();
+      });
     });
   }
 
   hide() {
     return new Promise((resolve) => {
-      gsap.to(this.element, { autoAlpha: 0, onComplete: resolve });
+      this.removeEventListeners();
+      this.animationOut = gsap.timeline();
+
+      this.animationOut.to(this.element, { autoAlpha: 0, onComplete: resolve });
     });
+  }
+
+  onMouseWheel(e) {
+    console.log(e);
+  }
+
+  addEventListeners() {
+    window.addEventListener('mousewheel', this.onMouseWheel);
+  }
+
+  removeEventListeners() {
+    window.removeEventListener('mousewheel', this.onMouseWheel);
   }
 }

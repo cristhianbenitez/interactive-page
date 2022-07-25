@@ -1,6 +1,6 @@
 .detail {
-  @extend %cover;
   @extend %center;
+  @extend %page;
 
   background: $--clr-quicksand;
   color: $--clf-white;

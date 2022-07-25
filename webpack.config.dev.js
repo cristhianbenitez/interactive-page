@@ -10,15 +10,17 @@ module.exports = merge(config, {
   devtool: 'inline-source-map',
 
   devServer: {
-    static: './dist',
-    hot: true,
-    watchFiles: ['views/**/*.pug'],
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    watchFiles: ['views/**/*.pug', 'app/**/*.js'],
   },
+
   plugins: [new webpack.HotModuleReplacementPlugin()],
 
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    publicPath: '/',
+    assetModuleFilename: '[name][ext]',
   },
 });

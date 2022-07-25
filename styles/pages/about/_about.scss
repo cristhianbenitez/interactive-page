@@ -1,6 +1,8 @@
 @import './content', './gallery', './highlight';
 
 .about {
+  @extend %page;
+
   background: $--clr-cadet-blue;
   color: $--clr-bright-gray;
 }

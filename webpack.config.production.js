@@ -10,6 +10,7 @@ module.exports = merge(config, {
 
   output: {
     path: path.join(__dirname, 'dist'),
+    clean: true,
   },
 
   plugins: [new CleanWebpackPlugin()],

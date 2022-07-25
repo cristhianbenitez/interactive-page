@@ -1,16 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html {
+  @extend %cover;
+
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
+  overflow: hidden;
+  position: fixed;
 
   @include media('<phone') {
     font-size: calc(100vw / 750 * 10);
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+body {
+  @extend %description-16;
+  @extend %cover;
+
+  font-family: $--ff-suisse;
+  position: fixed;
 }
 
 a {
@@ -33,4 +45,8 @@ button {
   outline: none;
   cursor: pointer;
   border: none;
+}
+
+.content {
+  @extend %cover;
 }
